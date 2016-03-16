@@ -2,20 +2,21 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
-  isDisabled: true,
+  inputEmail:   '',
+  inputMessage: '',
 
-  emailAddress2: '',
-  message: '',
+  isEmailValid:  Ember.computed.match('inputEmail', /^.+@.+\..+$/),
+  isMessageValid: Ember.computed.gte('inputMessage.length', 5),
 
-  isValid: Ember.computed.match('emailAddress', /^.+@.+\..+$/),
-  isMessageLongEnough: Ember.computed.gte('message.length', 5),
+  isValid:    Ember.computed.and('isEmailValid', 'isMessageValid'),
+  isDisabled: Ember.computed.not('isValid'),
 
-   isDisabled2: Ember.computed.and('isValid', 'isMessageLongEnough')
-
-
-   actions: {
-    saveInvitation2() {
-      alert(`Saving of the following email address is in progress: ${this.get('emailAddress')}')
+  actions: {
+    sendEmail() {
+      this.set('confirmationMessage', `Thank you for contacting us, we will get back in touch soon at ${this.get('inputEmail')}`);
+      this.set('inputEmail', '');
+      this.set('inputMessage', '');
     }
-   }
+  }
+
 });
