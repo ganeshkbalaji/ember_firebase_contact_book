@@ -1,0 +1,18 @@
+<div class="jumbotron text-center">
+<h1>Send me a message!</h1>
+
+<br/><br/>
+
+<div class="form-horizontal form-group form-group-lg row">
+<div class=".col-centered">
+<div class="col-xs-12 col-sm-4 col-sm-offset-4 col-lg-4 col-lg-offset-4">
+{{input type="email" value=emailAddress2 class="form-control contact" placeholder="Enter your e-mail" autofocus="autofocus"}}
+{{textarea class ="form-control" rows="5" type="text" value=message class="form-control contact" placeholder="Leave me a message" autofocus="autofocus"}}
+</div>
+</div>
+
+</div>
+<div class="col-xs-14 col-sm-4 col-sm-offset-4 col-lg-4 col-lg-offset-4">
+<button class="btn btn-primary btn-lg btn-block" disabled={{isDisabled2}} {{action 'saveInvitation'}}>Send me a message</button>
+</div>
+</div>
